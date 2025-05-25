@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+	<section class="logins py-5">
+		<div class="container py-xl-5 py-lg-3">
+			<div class="title-section mb-md-5 mb-4">
+				<h6 class="" style="color:red"></h6><br><br><center>
+				<h3 class="text-uppercase text-dark font-weight-bold">AI Powered Prediction</h3></center>
+			</div><hr/>
+			<div class="login px-sm-12" style="width:100%">
+
+                <h3 align='center' style='color:#414141'>Result</h3></br></br><center><p><b>Accuracy (%) is :</b> {{ accuracy }}  </p><p><b>Result:</b>
+                {% if pred == "0" %}
+                <span style='color:green'><strong>You are healthy.</strong></span>
+                {% else %}
+                <span style='color:red'><strong>There's a potential for cardiac issues</strong></span>
+                {% endif %}
+
+            </p></center>
+        </br>
+			</div>
+
+		</div>
+	</section>
+
+{% endblock %}

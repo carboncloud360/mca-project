@@ -1,0 +1,67 @@
+<title>Online Booking</title>
+{% extends 'layout.html' %}
+{% load static %}
+{% block body %}
+
+{% if user.is_authenticated %}
+
+</br></br></br>
+ <!--Update and Logout-->
+ <div class="user-panel text-center p-4 m-5">
+ <a href="{% url 'userPanel' %}" class="button-c text-uppercase">userPanel</a>
+<a href="{% url 'logoutx' %}" class="button-c text-uppercase">Logout</a>
+</div>
+
+<div class="shadow p-4 bg-body bg-body rounded text-black  m-5  text-center">
+    <form method="post" action="{% url 'booking' %}" class="me-2 ms-2" required>
+        {% csrf_token %}
+
+        <!--Select service-->
+        <div>
+            </br></br></br>
+            <h3 class="mt-5">Select Service/ Treatment:</h3>
+            <select class="form-select fs-3" name="service">
+                <option value="Consultation with a Cardiologist">Consultation with a Cardiologist</option>
+                <option value="Cardiac Diagnostic Testing">Cardiac Diagnostic Testing</option>
+                <option value="Stress Testing">Stress Testing</option>
+                <option value="Cardiac Imaging">Cardiac Imaging</option>
+                <option value="Cardiac Rehabilitation Program">Cardiac Rehabilitation Program</option>
+            </select>
+        </div>
+
+            <!--Select Date-->
+            <div class="mt-5">
+                <h3 class="">Select Date:</h3>
+                <select class="form-select fs-3" name="day">
+                    {% for validateWeekday in validateWeekdays %}
+                    <option value="{{validateWeekday}}">{{validateWeekday}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <br/>
+             <!--Next Step-->
+            <button type="submit" class="button-c text-uppercase">Continue</button>
+                    </br></br>
+
+                    
+        </div>
+    </form>
+</div>
+
+{% else %}
+
+<div class="shadow p-4 mb-5 bg-body bg-body rounded text-black  m-5  text-center">
+
+   </br> </br> </br> </br> </br> </br></br> </br>
+    <h3 class="">You Are Not Signed in</h3>
+    </br>
+    <a href="{% url 'register' %}" class="button-c text-center">Sign in</a></br>
+      </br> </br> </br> </br> </br> </br></br> 
+
+</div>
+
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+
+
+<div class="text-center">
+</br></br></br></br></br></br>
+    <h1>Error Sending Email</h1>
+    <p>An error occurred: {{ error }}</p>
+    <a href="/confirm-booking/">Try Again</a>
+</br></br></br></br></br></br>
+</div>
+{% endblock %}

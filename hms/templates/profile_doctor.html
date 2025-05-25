@@ -1,0 +1,83 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container" style="width:60%;margin-top:10%;margin-bottom:5%;background:white;border-radius:5%;border:1px solid grey">
+    <br>
+
+
+<div align="left" class="container-fluid" style="width:100%;margin-bottom:5%">
+
+    <div class="row">
+        <div class="col-md-6" style="color: #000000; font-weight: 900;">
+            <strong>Image:</strong>
+        </div>
+        <div class="col-md-6">
+            <img src="{{pro.image.url}}" style="width:100px;height:100px"></img>
+        </div></div>
+    <hr><div class="row" >
+        <div class="col-md-6" style="color: #000000; font-weight: 900;">
+            <strong>Full Name:</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.user.first_name}} {{pro.user.last_name}}
+        </div>
+    </div><hr>
+
+
+   
+
+    <div class="row">
+        <div class="col-md-6" style="color: #000000; font-weight: 900;">
+            <strong>Email Id :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.user.email}}
+        </div>
+    </div><hr>
+
+     <div class="row">
+        <div class="col-md-6" style="color: #000000; font-weight: 900;">
+            <strong>Date of Birth :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.dob}}
+        </div>
+    </div><hr>
+
+
+     <div class="row">
+        <div class="col-md-6" style="color: #000000; font-weight: 900;">
+            <strong>Contact :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.contact}}
+        </div>
+     </div><hr>
+
+    <div class="row">
+        <div class="col-md-6" style="color: #000000; font-weight: 900;">
+            <strong>City :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.address}}
+        </div>
+    </div><hr>
+    {% ifnotequal error "pat" %}
+    <div class="row">
+        <div class="col-md-6" style="color: #000000; font-weight: 900;">
+            <strong>Specialist :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.category}}
+        </div>
+    </div><hr>
+    {% endifnotequal %}
+    <div class="login px-sm-12" style="width:100%">
+    <a href="{% url 'edit_profile' %}">
+        <button class="button-c submit mt-4 " style="width:100%; background-color: #3770ec;">Update Detail</button>
+    </a>
+    </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,240 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+	<!-- register -->
+
+<center>
+
+	<section class="logins py-5">
+		<div class="container py-xl-5 py-lg-3">
+			<div class="title-section mb-md-5 mb-4">
+				<h6 class=""></h6>
+				<br><br>
+				<h2 class="text-uppercase text-dark font-weight-bold">Add Heart Detail</h2>
+			</div><hr/>
+			<div class="login px-sm-12" style="width:100%">
+				<form action="" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+					<div class="form-group row">
+						<div class="col-md-4">
+						<label>Age</label>
+						<input type="text" class="form-control" name="age"  required="">
+						</div>
+					<div class="col-md-4">
+						<label>Sex</label>
+						<input type="text" class="form-control" name="sex"  required="">
+						</div>
+					<div class="col-md-4">
+						<label>Chest Pain Type (cp)</label>
+						<input type="text" class="form-control" name="cp"  required="">
+						</div>
+						</div>
+						<div class="form-group row">
+					<div class="col-md-4">
+						<label>Resting Blood Pressure (trestbps)</label>
+						<input type="text" class="form-control" name="trestbps"  required="">
+						</div>
+					<div class="col-md-4">
+						<label>Serum Cholesterol (chol)</label>
+						<input type="text" class="form-control" name="chole"  required="">
+						</div>
+					<div class="col-md-4">
+						<label>Fasting Blood Sugar (fbs)</label>
+						<input type="text" class="form-control" name="fbs"  required="">
+						</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-4">
+						<label>Resting Electrocardiographic(restecg)</label>
+						<input type="text" class="form-control" name="restecg"  required="">
+						</div>
+					<div class="col-md-4">
+						<label>Maximum Heart Rate Achieved (thalach)</label>
+						<input type="text" class="form-control" name="thalach"  required="">
+						</div>
+					<div class="col-md-4">
+						<label>Exercise Induced Angina</label>
+						<input type="text" class="form-control" name="exang"  required="">
+						</div>
+							</div>
+						<div class="form-group row">
+					<div class="col-md-4">
+						<label>ST Depression Induced by Exercise</label>
+						<input type="text" class="form-control" name="old_peak"  required="">
+						</div>
+					<div class="col-md-4">
+						<label>Slope of Peak Exercise ST Segment (slope)</label>
+						<input type="text" class="form-control" name="slope"  required="">
+						</div>
+					<div class="col-md-4">
+						<label>Number of Major Vessels </label>
+						<input type="text" class="form-control" name="ca"  required="">
+						</div>
+				</div>
+
+				<div class="form-group row">
+
+				<div class="col-md-4">
+					<label>Thalassemia (thal)</label>
+					<input type="text" class="form-control" name="thal"  required="">
+					</div>
+				</div>
+
+					<button type="submit" class="button-c submit mt-4" style="background-color: #3770ec;">Submit Data to AI system</button>
+				</form>
+			</div>
+		</div>
+
+		<div class="m-5">
+
+<div class="form-group row border">
+
+<div class="col-md-6 border">
+</br>	<b>Age</b></br></br>
+Description: Age of the patient in years.</br>
+Normal Range: N/A (used as-is).</br>
+Typical Values in Dataset: 29–77 years.</br>
+</div>
+
+<div class="col-md-6 border">
+</br>	<b>Sex</b></br></br>
+Description: Sex of the patient.</br>
+1 = Male</br>
+0 = Female</br>
+Normal Value: N/A (categorical).</br>
+Note: Used for risk stratification (men are typically at higher risk earlier in life).</br>
+</div>
+</div>
+
+
+<div class="form-group row border">
+<div class="col-md-6 border">
+</br>	<b>Chest Pain Type (cp)</b></br></br>
+Description:</br>
+0 = Typical angina</br>
+1 = Atypical angina</br>
+2 = Non-anginal pain</br>
+3 = Asymptomatic</br>
+Normal (least concerning): 2 = Non-anginal pain.</br>
+</div>
+
+
+<div class="col-md-6 border">
+</br>	<b>Resting Blood Pressure (trestbps)</b></br></br>
+Description: Resting blood pressure (in mm Hg).</br>
+Normal Range: 90–120 mm Hg systolic.</br>
+Borderline: 120–129 (elevated), 130–139 (Stage 1 hypertension).</br>
+</div>
+</div>
+
+
+<div class="form-group row border">
+<div class="col-md-6 border">
+</br>	<b>Serum Cholesterol (chol)</b></br></br>
+Description: Serum cholesterol in mg/dL.</br>
+Normal Range:</br>
+Desirable: less than 200 mg/dL</br>
+Borderline High: 200–239 mg/dL</br>
+High: ≥ 240 mg/dL</br>
+</div>
+
+<div class="col-md-6 border">
+</br>	<b>Fasting Blood Sugar (fbs)</b></br></br>
+Description: Fasting blood sugar > 120 mg/dL</br>
+1 = True</br>
+0 = False</br>
+Normal Value: 0 (i.e., lessthan 120 mg/dL)</br>
+</div>
+</div>
+
+
+<div class="form-group row border">
+<div class="col-md-6 border">
+</br>	<b>Resting Electrocardiographic Results (restecg)</b></br></br>
+Values:</br>
+0 = Normal</br>
+1 = Having ST-T wave abnormality</br>
+2 = Left ventricular hypertrophy</br>
+Normal: 0</br>
+</div>
+
+<div class="col-md-6 border">
+</br>	<b>Maximum Heart Rate Achieved (thalach)</b></br></br>
+Description: Max heart rate achieved during exercise.</br>
+Typical Normal Range:</br>
+Varies with age: 220 – age (formula for maximum heart rate)</br>
+E.g., For 50 years old: max HR ~170 bpm</br>
+Higher values often indicate better heart fitness.</br>
+</div>
+</div>
+
+
+<div class="form-group row border">
+<div class="col-md-6 border">
+</br>	<b>Exercise Induced Angina (exang)</b></br></br>
+Description:</br>
+1 = Yes</br>
+0 = No</br>
+Normal: 0 (no exercise-induced angina)</br>
+</div>
+
+
+<div class="col-md-6 border">
+</br>	<b>ST Depression Induced by Exercise (oldpeak)</b></br></br>
+Description: ST depression compared to rest.</br>
+
+Normal Range: 0.0–1.0</br>
+
+Values > 2.0 may indicate ischemia.</br></div>
+
+</div>
+
+
+<div class="form-group row border">
+<div class="col-md-6 border">
+</br>	<b>Slope of Peak Exercise ST Segment (slope)</b></br></br>
+Values:</br>
+
+0 = Upsloping (least risk)</br>
+
+1 = Flat</br>
+
+2 = Downsloping (highest risk)</br>
+
+Normal: 0</br></div>
+<div class="col-md-6 border">
+</br>	<b>Number of Major Vessels Colored by Fluoroscopy (ca)</b></br></br>
+Range: 0–3 (or 4 in some datasets).</br>
+
+Normal: 0 (no major vessels with blockage)</br></div>
+
+</div>
+
+
+<div class="form-group row border">
+					<div class="col-md-6 border">
+					</br>	<b>Thalassemia (thal)</b></br></br>
+Values:</br>
+
+1 = Normal</br>
+
+2 = Fixed defect</br>
+
+3 = Reversible defect</br>
+
+Normal: 1</br></div>
+<div class="col-md-6 border"></br>
+<b>Target (Presence of Heart Disease)</b></br></br>
+Description: Diagnosis of heart disease (binary or multiclass in some versions).</br>
+
+0 = No disease</br>
+
+1 = Disease (in binary versions)</br>
+
+Normal: 0</br></div>
+
+		</div>
+	</section>
+	<!-- //register -->
+</center>
+{% endblock %}

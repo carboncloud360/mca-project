@@ -1,0 +1,37 @@
+<title>Sign Up</title>
+{% extends 'layout.html' %}
+{% load static %}
+{% block body %}
+
+
+
+{% if user.is_authenticated %}
+<h1 class="p-2 text-center mb-5 text-warning">You Are Already Signed in</h1>
+
+{% else %}
+
+
+<div class="bg-white">
+    
+<div class="shadow p-4 m-5 bg-body bg-body rounded text-black"></br></br>
+ <!--Sign In-->
+        <label class="form-label fs-3 mt-5"><h3>Already Have An Account? Sign in</h3></label>
+        </br>
+        <a href="{% url 'loginx' %}" class="button-c text-uppercase">Sign in</a></br></br></br><hr>
+         <!--Sign Up-->
+    <h3 class="text-black">Don't Have an Account? Sign Up</h3>
+<form method="POST" action="{% url 'register' %}">
+    {% csrf_token %}
+
+       {{ form.as_p }}
+
+        <br/>
+        <button type="submit" class="button-c text-uppercase">Submit</button>
+        </br>
+        
+</form>
+</div>
+<br/>
+</div>
+{% endif %}
+{% endblock %}

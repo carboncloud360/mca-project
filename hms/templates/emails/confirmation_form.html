@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+
+
+<div class="text-center">
+</br></br></br></br></br>
+    <h3>Confirm Booking</h3></br>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+    </br> <button type="submit"  class="button-c">Send Confirmation</button>
+    </form>
+</br></br></br></br></br></br>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container-fluid" style="width:80%;margin-top:10%">
+                    <div class="container-fluid">
+                        <h1 align="center" class="text-uppercase font-weight-bold" style="background-color:#b8ffb5;">Patient Health Data</h1>
+                         </div><hr>
+                       
+                                <table id="example" class="display" style="width:100%">
+                                  <thead>
+                                    <tr style="background-color:#a9c8fc">
+                                      <th>No.</th>
+                                      {% if request.user.patient_set.all.0 %}
+                                      <th>Date</th>
+                                      {% else %}
+                                      <th>Patient Name</th>
+                                      {% endif %}
+                                     
+                                      <th>Result</th>
+                                      <th>HeartValue</th>
+                                       <th>Accuracy</th>
+                                      <th>Action</th>
+
+                                  </tr>
+                              </thead>
+                              <tbody>
+                              {% for i in data %}
+                                <tr>
+                                  <td>{{forloop.counter}}</td>
+                                  {% if request.user.patient_set.all.0 %}
+                                    <td>{{i.created}}</td>
+                                  {% else %}
+                                  <td>{{i.patient.user.first_name}} {{i.patient.user.last_name}}</td>
+                                  {% endif %}
+                                  
+                                    <td>{% if i.result == "0" %}
+                                      <h5 style="color:green">Healty</h5>
+                                      {% else %}
+                                      <h5 style="color:red">Unhealty</h5>
+                                  {% endif %}
+                                  </td>
+                                   
+                                  <td>{{i.values_list}}</td>
+                                  <td>{{i.prediction_accuracy}}</td>
+                                  <td style="width:150px">
+
+
+                                      <a href="/delete_searched/{{i.id}}" ><button class="button-c" onclick="return confirm('Are you sure?')"><i class="fa fa-trash-o"></i></button></a></td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+                  </div>
+{% endblock %}

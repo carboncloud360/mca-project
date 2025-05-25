@@ -1,0 +1,84 @@
+{% extends 'index.html' %} {% load static %} {% block body %}
+
+
+
+<div class="container-fluid" style="margin-top: 8%; width: 80%">
+  <div class="container-fluid">
+    <h3 align="center" style="font-weight: bold;">
+      ADMIN DASHBOARD
+    </h3>
+    <hr />
+    <br />
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <a href="{% url 'view_doctor' %}">
+        <div
+          style="margin: 1%; padding: 10px; background: #1ab35a; text-center color: white"
+        >
+          <h3 style="font-weight: bold; font-size: 35px">{{doc}}</h3>
+          <h4 style="font-weight: bold">Staff</h4>
+        </div></a
+      >
+    </div>
+
+    <div class="col-md-6">
+      <a href="{% url 'view_patient' %}">
+        <div
+          style="padding: 10px; margin: 1%; background: #1ab35a; text-center color: white"
+        >
+          <h3 style="font-weight: bold; font-size: 35px">{{pat}}</h3>
+          <h4 style="font-weight: bold">Patients</h4>
+        </div></a
+      >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <a href="{% url 'view_feedback' %}">
+        <div
+          style="padding: 10px; margin: 1%; background: #1ab35a; text-center color: white"
+        >
+          <h3 style="font-weight: bold; font-size: 35px">{{feed}}</h3>
+          <h4 style="font-weight: bold">Feedback</h4>
+        </div></a
+      >
+    </div>
+
+    <div class="col-md-6">
+      <a href="{% url 'view_search_pat' %}">
+        <div
+          style="padding: 10px; margin: 1%; background: #1ab35a; text-center color: white"
+        >
+          <h3 style="font-weight: bold; font-size: 35px">{{feed}}</h3>
+          <h4 style="font-weight: bold">Patient Data</h4>
+        </div></a
+      >
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <a href="{% url 'staffPanel' %}">
+        <div
+          style="padding: 10px; margin: 1%; background: #1ab35a; text-center color: white"
+        >
+          <h3 style="font-weight: bold; font-size: 35px">{{feed}}</h3>
+          <h4 style="font-weight: bold">Booking</h4>
+        </div></a
+      >
+    </div>
+
+    <div class="col-md-6">
+   
+    </div>
+  </div>
+
+  <div>
+    <hr />
+    <br />
+
+    <br /><br />
+  </div>
+  {% endblock %}
+</div>

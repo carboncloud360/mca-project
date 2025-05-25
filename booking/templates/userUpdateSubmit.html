@@ -1,0 +1,41 @@
+<title>Edit Appointment</title>
+{% extends 'layout.html' %}
+{% load static %}
+{% block body %}
+
+
+{% if user.is_authenticated %}
+</br></br></br></br>
+<h2 class="text-center mt-3 text-uppercase">Edit Appointment</h2><hr>
+
+<div class="shadow p-4 bg-body bg-body rounded text-black text-center m-5">
+    <form method="post" action="{% url 'userUpdateSubmit' id %}" class="me-2 ms-2" required>
+        {% csrf_token %}
+        
+        <!--Time-->
+        <h3 class="text-center fPersian mt-4">Time:</h3>
+        <div>
+            <select class="form-select fs-3 text-center" name="time">
+                {% for time in times %}
+                <option value="{{time}}">{{time}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="button-c text-white mt-3 text-uppercase">Submit</button>
+
+    </form>
+</br></br></br></br>
+</div>
+
+{% else %}
+
+<div class="shadow p-4 mb-5 bg-body bg-body rounded text-black  m-5">
+    <h1 class="p-2  me-3">Sign in</h1>
+    <a href="{% url 'login' %}" class="button-c text-white">Sign in</a>
+</div>
+
+{% endif %}
+
+
+{% endblock %}

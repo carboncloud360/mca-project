@@ -1,0 +1,77 @@
+<title>Staff Panel</title>
+{% extends 'layout.html' %}
+{% load static %}
+{% block body %}
+
+
+{% if user.is_authenticated %}
+
+<!-- Appointment Table -->
+<div class="shadow p-4 mb-5 bg-body bg-body rounded text-black  m-5 ">
+    <h1 class="text-center mt-5 mb-5 text-uppercase">Staff Panel</h1>
+    <input class="form-control form-control-lg fs-3 border border-primary" id="myInput" type="text" placeholder="Search Appointment">
+    <br>
+    
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped table-hover mx-auto">
+          <thead>
+            <tr>
+              <th class="text-center" scope="col">Time</th>
+              <th class="text-center" scope="col">First Name</th>
+              <th class="text-center" scope="col">Last Name</th>
+              <th class="text-center" scope="col">Email</th>
+        <!-- <th class="text-center" scope="col">Phone</th>  -->
+              <th class="text-center" scope="col">Service</th>
+              <th class="text-center" scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody id="myTable">
+              {% for item in items %}
+            <tr>
+              <td class="text-center">{{item.time}}</td>
+              <td class="text-center">{{item.user.first_name}}</td>
+              <td class="text-center">{{item.user.last_name}}</td>
+              <td class="text-center">{{item.user.email}}</td>
+         <!-- <td class="text-center">{{item.user.phone}}</td>  -->
+              <td class="text-center">{{item.service}}</td>
+              <td class="text-center">{{item.day}}</td>
+            </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </br></br>
+      <div class="text-center">
+        <h3>Send confirmation mail</h3> </br>
+        <div>
+          <form method="post" action="{% url 'send_confirmation' %}">  {% csrf_token %}
+            {{ form.as_p }}  <button type="submit" class="button-c">Send confirmation mail</button>  </form>
+          </div>
+      </div>
+    </br></br>
+</div>
+
+{% else %}
+
+<div class="shadow p-4 mb-5 bg-body bg-body rounded text-black  m-5">
+  <h1 class="p-2  me-3">First Sign in!</h1>
+  <a href="{% url 'login' %}" class="button-c text-white">Sign in</a>
+</div>
+
+{% endif %}
+
+<!--Search-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+</script>
+
+{% endblock %}
